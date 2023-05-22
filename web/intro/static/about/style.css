@@ -1,0 +1,22 @@
+.banner-top{
+    background-color: #547793;
+}
+
+.navbar-brand > img{
+    width: 60px
+}
+
+.nav-item::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .5s ;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+    transition: width .5s;
+    
+}

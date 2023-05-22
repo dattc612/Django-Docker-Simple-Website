@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: introcom
+  labels:
+    app: introcom
+    app.kubernetes.io/name: introcom
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: introcom
+  template:
+    metadata:
+      labels:
+        app: introcom
+        app.kubernetes.io/name: introcom
+    spec:
+      containers:
+      - name: introcom
+        image: dattc/introcom:latest
+        ports:
+        - containerPort: 8000

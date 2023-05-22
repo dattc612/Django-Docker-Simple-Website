@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: introcom
+  name: introcom-ingress
+  namespace: default
+spec:
+  defaultBackend:
+    service:
+      name: introcom-service
+      port:
+        number: 8000
+  ingressClassName: nginx
+  rules:
+  - host: introcom.dev.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: introcom-service
+            port:
+              number: 8000
+        pathType: ImplementationSpecific

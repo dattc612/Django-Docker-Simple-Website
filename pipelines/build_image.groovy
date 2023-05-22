@@ -24,7 +24,7 @@ podTemplate(cloud: 'kubernetes', containers: [
       }
     }
     stage('Clone source'){
-      CHECKOUT_OUTPUT = checkout scmGit(branches: [[name: '${BRANCH}']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitlab-credential', url: 'http://gitlab-webservice-default:8181/dattc/demo.git']])
+      CHECKOUT_OUTPUT = checkout scmGit(branches: [[name: '${BRANCH}']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitlab', url: 'http://gitlab-webservice-default:8181/dattc/demo.git']])
     }
     println "${CHECKOUT_OUTPUT['GIT_COMMIT'].substring(0,8)}"
     stage('Build') {

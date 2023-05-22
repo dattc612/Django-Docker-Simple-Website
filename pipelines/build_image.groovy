@@ -30,7 +30,7 @@ podTemplate(cloud: 'kubernetes', containers: [
     
     stage('Build') {
       container('buildah'){
-        sh 'buildah build -t dattc/introcom web/'         
+        sh 'buildah build -t dattc/introcom ${sources}/web/'         
       }
     }
     stage('Login') {

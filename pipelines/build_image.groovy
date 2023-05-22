@@ -15,7 +15,7 @@ podTemplate(cloud: 'kubernetes', containers: [
         properties([
           parameters([
             text(
-              defaultValue: 'develop',
+              defaultValue: 'main',
               name: 'BRANCH',
               describe:'Branch to build'
             )
@@ -24,12 +24,12 @@ podTemplate(cloud: 'kubernetes', containers: [
       }
     }
     stage('Clone source'){
-      CHECKOUT_OUTPUT = checkout scmGit(branches: [[name: '${BRANCH}']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitlab-credential', url: 'http://gitlab-webservice-default.iamdat-service:8181/dattc/company.git']])
+      CHECKOUT_OUTPUT = checkout scmGit(branches: [[name: '${BRANCH}']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitlab-credential', url: 'http://gitlab-webservice-default:8181/dattc/demo.git']])
     }
     println "${CHECKOUT_OUTPUT['GIT_COMMIT'].substring(0,8)}"
     stage('Build') {
       container('buildah'){
-        sh 'buildah build -t dattc/introcom company/'         
+        sh 'buildah build -t dattc/introcom web/'         
       }
     }
     stage('Login') {

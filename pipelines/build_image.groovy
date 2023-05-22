@@ -27,8 +27,8 @@ podTemplate(cloud: 'kubernetes', containers: [
       CHECKOUT_OUTPUT = scmGit scmGit(branches: [[name: '${BRANCH}']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitlab_api_token', url: 'http://gitlab-webservice-default.cicd-service:8181/dattc/demo.git']])
     }
     stage('Build') {
-      container('buildah'){
-        sh 'buildah build -t dattc/introcom Demo/web/'         
+      container('buildah'){ 
+        sh 'sleep 1000; buildah build -t dattc/introcom Demo/web/'         
       }
     }
     stage('Login') {

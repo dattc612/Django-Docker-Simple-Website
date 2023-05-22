@@ -24,8 +24,7 @@ podTemplate(cloud: 'kubernetes', containers: [
       }
     }
     stage('Clone source'){
-      CHECKOUT_OUTPUT = scmGit scmGit(branches: [[name: '${BRANCH}']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitlab_api_token', url: 'http://gitlab-webservice-default:8181/dattc/demo.git']])
-      println "${CHECKOUT_OUTPUT}"
+      checkout scmGit(branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'http://dattc:glpat-PWJ-v5h3_Dm5XJssxr7T@gitlab-webservice-default:8181/dattc/demo.git']])
     }
     
     stage('Build') {
